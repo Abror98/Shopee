@@ -1,4 +1,4 @@
-# Demo Online Shope applicatio 
+# Demo Online Shope application
 
 A new Flutter application.
 
