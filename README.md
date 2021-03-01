@@ -1,4 +1,4 @@
-# example1
+# Shope application UI
 
 A new Flutter application.
 
