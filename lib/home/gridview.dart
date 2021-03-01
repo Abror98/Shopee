@@ -45,9 +45,9 @@ class _ClothesListState extends State<ClothesList> {
           return GestureDetector(
               onTap: (){
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DetailScreen(ab, widget.photos[index].sum, widget.photos[index].name, widget.photos[index].availability, widget.photos[index].image),
-                ));
+                    context,
+                    MaterialPageRoute(builder: (context) => DetailScreen(ab, widget.photos[index].sum, widget.photos[index].name, widget.photos[index].availability, widget.photos[index].image),
+                    ));
               },
               child: Column(
                 children:<Widget> [

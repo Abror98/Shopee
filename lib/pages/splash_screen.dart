@@ -1,6 +1,5 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:example1/home/base_page.dart';
-import 'file:///F:/Programming/flutter_apps/firephoneauth/lib/home/home_page.dart';
 import 'package:example1/pages/login_page.dart';
 import 'package:example1/stores/login_store.dart';
 import 'package:flutter/material.dart';

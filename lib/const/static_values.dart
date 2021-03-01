@@ -5,5 +5,4 @@ class MyStaticValues{
   static String size;
   static int count = 1;
   static int valueablity = 1;
-
 }

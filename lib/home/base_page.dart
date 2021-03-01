@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:example1/cart/cart_empty_page.dart';
 import 'package:example1/const/static_values.dart';
 import 'package:example1/internet_connecting/net_connecting.dart';
+import 'package:example1/pages/about_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -23,10 +24,9 @@ Future<List<Clothes>> fetchPhotos(http.Client client) async {
   var response = await client.get(url);
   if(response.statusCode == 200){
     dynamic parsedjson = jsonDecode(response.body);
+    return compute(parsePhotos, response.body.toString());
   }
-
   // Use the compute function to run parsePhotos in a separate isolate.
-  return compute(parsePhotos, response.body.toString());
 }
 
 // A function that converts a response body into a List<Photo>.
@@ -99,12 +99,11 @@ class _BasePageState extends State<BasePage> {
        future: fetchPhotos(http.Client()),
        builder: (context, snapshot) {
          if(snapshot.hasError)
-           print("oksalom " + snapshot.error);
+           print(snapshot.error.toString());
          return
            snapshot.hasData?
            ClothesList(photos: snapshot.data.sublist(12, 18), count: 6)
                : new Center(child: new CircularProgressIndicator());
-
        },
      ),
     new FutureBuilder<List<Clothes>>(
@@ -174,6 +173,12 @@ class _BasePageState extends State<BasePage> {
                         MaterialPageRoute(builder: (context) => (CartEmpty())));
                   },
                 ),
+                IconButton(
+                  icon: Icon(Icons.info, color: Colors.black,),
+                  onPressed: () {
+                    navigateToAoutPage(context);
+                  },
+                ),
                 SizedBox(width: kDefaultPaddin / 4,),
 
               ],
@@ -229,6 +234,12 @@ class _BasePageState extends State<BasePage> {
         );
       }
   );
+  }
+
+  void navigateToAoutPage(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return AboutPage();
+    }));
   }
 
 
